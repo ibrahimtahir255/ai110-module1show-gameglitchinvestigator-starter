@@ -25,13 +25,21 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [ ] Describe the game's purpose.  
+The game is a number guessing game where the user has to guess a secret number. There are different levels (Easy, Normal, Hard). On every try the game either says the answer is correct if the guess is the same as the secret, or hints (Too High or Too low). There are a limited number of attemps and the score is absed on how amny attempts the user took to get to the correct answer. 
+- [ ] Detail which bugs you found.  
+1) The check_guess had the hints reversed. When the guess was too high it said "Go Higher" and when too low it said "Go Lower", which made no sense and was counterintuitive.  
+2) The get_range_for_difficulty function returned a range of 1-50 for Hard mode, which is actually easier than Normal mode's range (1-100) since its narrower.  
+3) The new game block only reset attempts and secret, but left status, score, and history unchanged. Since the status stayed as "won" or "lost", the game ws not able to restart.  
+4) The update_score function awarded +5 points on even-numbered attempts when the guess was too high, instead of deducting points
+- [ ] Explain what fixes you applied.  
+1) Swapped the hint messages so "Too High" now says "Go Lower" and "Too Low" now says "Go Higher". Also refactored this into logic_utils.py. 
+2) Changed the hard difficulty range from 1-50 to 1-200 so it is actually harder than Normal (1-100). 
+3) Added status, score, and history resets to the new_game block so the game fully restarts when the button is clicked.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- ![App Screenshot](screenshots/app_screenshot.png) 
 
 ## 🚀 Stretch Features
 

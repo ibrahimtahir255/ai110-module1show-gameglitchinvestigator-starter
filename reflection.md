@@ -43,15 +43,25 @@ Yes! I designed all my tets using AI and then there were some tests it generated
 
 ## 4. What did you learn about Streamlit and state?
 
-- In your own words, explain why the secret number kept changing in the original app.
+- In your own words, explain why the secret number kept changing in the original app.  
+The secret number doesnt change, the stored value stays the same but the type of the secret changes on evry other guess. On even attempts, 42 == "42" is Flase in Python because an integer and a string are never equal. So even if you type the exact right number, the game says you're wrong every other attempt.   
+
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+Reruns work in a way that every time you click a button on a webpage, the entire page refreshes from scratch. Every click runs all your Python code again from line 1 to the last line.  
+Session state is like a small notepad that Streamlit keeps on the side. Even when the page reruns, anything you wrote on that notepad survives. So instead of storing your score in a regular variable, you store it in st.session_state.score.  
+
 - What change did you make that finally gave the game a stable secret number?
+The fix is to just use: secret = st.session_state.secret. 
+This means check_guess always compares two integers, so the correct guess is always recognized regardless of which attempt number you're on.
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+- What is one habit or strategy from this project that you want to reuse in future labs or projects? 
+  - This could be a testing habit, a prompting strategy, or a way you used Git.  
+  I really like creating test cases and I want to take this along as I work through future projects. This just helps you verfiy your bug fixes and make sure the application is robust.   
+- What is one thing you would do differently next time you work with AI on a coding task?  
+I would do more work trying to play with the application yself and have an understanding of what I need to fix instead of letting AI do it for me. It would just allow me to be more in control and feel a sense of ownership over my work and product. 
+- In one or two sentences, describe how this project changed the way you think about AI generated code.  
+I realized that AI is really helpful and it can be used to assist in coding, planning, and deubugging but its not okay to blindly let AI take control and do whatever it says.
